@@ -81,7 +81,7 @@ export default function Header() {
 
       {/* Hero Section */}
       <div className="bg-blue-500 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-4">Find Your Perfect Therapist</h2>
+        <h3 className="text-3xl font-bold mb-4">Find Your Perfect Therapist</h3>
         <p className="text-lg mb-6">
           Explore qualified therapists and personalized services to support your mental and physical health.
         </p>
