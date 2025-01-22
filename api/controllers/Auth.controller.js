@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'; // For password hashing
 import jwt from 'jsonwebtoken'; // For generating JWT
 import User from '../models/user.model.js'; // User model
+const { JWT_SECRET } = process.env; // Ensure you have JWT_SECRET in your .env file
 
 // Signup function
 export const signup = async (req, res) => {
@@ -28,3 +29,4 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: 'Error signing up', error: error.message });
   }
 };
+
