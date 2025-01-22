@@ -50,7 +50,7 @@ export default function Header() {
           </Link>
           
           <Link
-            to="/login"
+            to="/signin"
             className="px-4 py-2 bg-blue-700 rounded-lg shadow hover:bg-blue-800"
           >
             Log In
