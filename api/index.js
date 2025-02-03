@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';  // Import cors here
 import authRoutes from './routes/Auth.route.js';  // Correct import for ES Modules
+import therapistRoutes from "./routes/therapist.route.js";
 
 // Configure environment variables
 dotenv.config();
@@ -29,6 +30,8 @@ app.use(express.json());
 
 // Use routes for authentication and user management
 app.use('/api/auth', authRoutes);  // Use auth routes for /api/auth
+
+app.use("/api/therapist", therapistRoutes);
 
 // Start the server
 app.listen(3000, () => {

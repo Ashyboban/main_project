@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const SignupPage = () => {
+  const navigate = useNavigate(); // Initialize navigate function
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     role: 'user', // Default role as 'user'
   });
+
+  //console.log(formData.role);
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -21,15 +26,27 @@ const SignupPage = () => {
     try {
       // Make API call to backend to handle signup
       const response = await axios.post('http://localhost:3000/api/auth/signup', formData);
+      console.log(response);
+      
+
       if (response.status === 201) {
-        // Handle success (e.g., redirect or show success message)
+        const { redirectUrl } = response.data; // Extract redirectUrl from response
         alert('User created successfully');
+        if (redirectUrl) {
+          navigate(redirectUrl); // Redirect based on backend-provided URL
+        } else {
+          navigate('/dashboard'); // Default redirection for other roles
+        }
       }
     } catch (error) {
+      console.log(error);
+      
       console.error('Error signing up:', error);
       alert('Error signing up');
     }
   };
+
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
